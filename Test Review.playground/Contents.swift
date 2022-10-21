@@ -8,8 +8,11 @@
     BMI = (Weight / (Height * Height)) * 703
  * Test your function by calling it and printing the result.
  */
+func findBMI(Weight: Double, Height: Int) -> Double {
+    return (Weight / Double (Height * Height)) * 703
+}
 
-
+print(findBMI(Weight: 155, Height: 69))
 
 
 /*:
@@ -19,8 +22,14 @@
     * Call the addFriend(named:) method three times to add the following friends: “Alice”, “Bob”, and “Cindy”.
     * Print the contents of the friendsList variable.
  */
-
-
+var friendsList: [String] = []
+func addFriend (named friendName: String) {
+    friendsList.append(friendName)
+}
+addFriend(named: "Alice")
+addFriend(named: "Bob")
+addFriend(named: "Cindy")
+print(friendsList)
 /*:
  * Define a function, museumEntry(), that:
     * accepts a parameter named, numAdults of type, Int, prepended by an _
@@ -32,7 +41,12 @@
             * (studentTicket * numStudents) + (adultTicket * numAdults)
             * Store this expression in a constant, total and return total as the last line of the function.
  */
-
+func museumEntry(_ numAdults: Int, _ numStudents: Int) -> Int{
+    let studentTicket = 14
+    let adultTicket = 25
+    let total = (studentTicket * numStudents) + (adultTicket * numAdults)
+    return total
+}
 
 /*:
   2. ### Structures Review
@@ -49,16 +63,19 @@ struct Book {
      
      */
     // Write your init method below 💪
-    
-
+    init(pages: Int, title: String) {
+        self.pages = pages
+        self.title = title
+    }
 }
 
+let myFavBook = Book(pages: 0, title: "")
 
 /*:
 * Create an instance of a Book named theHobbit with the values title: "The Hobbit" and pages: 300.
  */
 // Write your code below 💪
-
+let theHobbit = Book(pages: 300, title: "The Hobbit")
 
 
 
@@ -76,8 +93,10 @@ var lemonadeStand = [
 
 var total: Double = 0.0
 // Write your code below 💪
-
-
+for (_, Profit) in lemonadeStand {
+    total = total + Profit
+}
+print(total)
 
 
 /*:
@@ -87,8 +106,19 @@ var total: Double = 0.0
     * Iterate through the dictionary to see all the characters and the actors who played them.
  */
 // Write your code below 💪
+var BCS = [
+    "Saul Goodman": "Bob Odenkirk",
+    "Kim Wexler" : "Rhea Seehorn",
+    "Mike Ehrmantraut": "Jonathan Banks",
+    "Nacho Varga" : "Michael Mando",
+    "Howard Hamlin" : "Patrick Fabian",
+    "Gus Fring" : "Giancarlo Esposito",
+    "Lalo Salamanca" : "Tony Dalton"
+]
 
-
+for (character, actor) in BCS {
+    print(actor + " plays " + character + " in Better Call Saul.")
+}
 
 /*:
  4. ### Classes Review
@@ -108,7 +138,12 @@ class Restaurant {
   var delivery = false
 
   // The init() goes here 🍝
-  
+    init(name: String, type: [String], rating: Double, delivery: Bool) {
+        self.name = name
+        self.type = type
+        self.rating = rating
+        self.delivery = delivery
+    }
   
 }
 
@@ -131,7 +166,9 @@ class Order {
   }
 }
 // Write your code below 💪
-
+class DeliveryOrder: Order {
+    var deliveryFee = 2.0
+}
 
 
 
@@ -140,8 +177,13 @@ var listOfNumbers = [1, 2, 3, 10, 100]
  * Print the maximum value from listOfNumbers.
  */
 // Write your code below 💪
-
-
+var max = 0
+for nums in listOfNumbers {
+    if nums > max {
+        max = nums
+    }
+}
+print(max)
 
 /*:
  * Print all the numbers from listOfNumbers that are located at odd indexes.
@@ -149,7 +191,11 @@ var listOfNumbers = [1, 2, 3, 10, 100]
 // Write your code below 💪
 
 
-
+for (i, v) in listOfNumbers.enumerated() {
+    if i % 2 == 1 {
+        print(v)
+    }
+}
 /*:
 *   In the code editor, we have an array called dna with three-letter codes of nucleotides, also known as codons.
     * Insert "GTG" at index 3.
@@ -158,6 +204,8 @@ var listOfNumbers = [1, 2, 3, 10, 100]
 */
 var dna = ["ATG", "ACG", "GAA", "TAT"]
 // Write your code below 💪
+dna.insert("GTG", at: 3)
+dna.remove(at: 0)
 
 
 /*:
@@ -170,4 +218,5 @@ var resolutions = ["play more music 🎸",
                    "read more books 📚",
                    "drink more water 💧"]
 // Write your code below 💪
-
+resolutions.append("get more sleep")
+resolutions += ["exercise more"]
